@@ -1,5 +1,6 @@
 package com.example.travel_planner1.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,9 +14,12 @@ public class Route {
     private Long id;
 
     private String start;
+
+    @Column(name = "end_location")  // 👈 Fix for SQL keyword conflict
     private String end;
-    private Double distance; // distance in kilometers
-    private Double duration; // duration in hours
+
+    private Double distance;
+    private Double duration;
 
     public Route() {}
 
@@ -27,7 +31,6 @@ public class Route {
         this.duration = duration;
     }
 
-    // Getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
